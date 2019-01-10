@@ -1,0 +1,36 @@
+{
+  "name": "niconizer",
+  "description": "Desktop application that overlay comments on the screen directly.",
+  "version": "0.0.0-development",
+  "bugs": {
+    "url": "https://github.com/matzkoh/niconizer/issues"
+  },
+  "devDependencies": {
+    "electron": "4.0.1",
+    "electron-packager": "13.0.1",
+    "npm-run-all": "4.1.5",
+    "ws": "6.1.2"
+  },
+  "homepage": "https://github.com/matzkoh/niconizer#readme",
+  "keywords": [
+    "chat",
+    "comment",
+    "desktop",
+    "electron",
+    "gadget",
+    "nicovideo"
+  ],
+  "license": "MIT",
+  "main": "lib",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matzkoh/niconizer.git"
+  },
+  "scripts": {
+    "package": "npm-run-all package:*",
+    "package:linux": "electron-packager . --overwrite --asar --platform=linux --arch=x64 --out=release",
+    "package:mac": "electron-packager . --overwrite --asar --platform=darwin --arch=x64 --out=release",
+    "package:win": "electron-packager . --overwrite --asar --platform=win32 --arch=ia32 --out=release",
+    "start": "electron ."
+  }
+}

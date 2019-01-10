@@ -1,0 +1,45 @@
+html,
+body {
+  width: 100vw;
+  height: 100vh;
+}
+
+body {
+  margin: 0;
+  overflow: hidden;
+}
+
+.comment-container {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 2147483647;
+  pointer-events: none;
+}
+
+.comment {
+  --size: 8vmin;
+  --font-size: calc(var(--size) * 0.8);
+  --shadow-size: calc(var(--font-size) / 10);
+  position: absolute;
+  top: calc(var(--size) * (var(--line) + var(--layer) / 5));
+  padding: calc(var(--size) / 10) 0;
+  font: var(--font-size)/1 sans-serif;
+  color: #fff;
+  white-space: pre;
+  text-shadow: 0 0 var(--shadow-size) #000, 0 0 var(--shadow-size) #000, 0 0 var(--shadow-size) #000;
+  transform: translateX(-100%);
+  transition: 5s linear;
+}
+
+.comment-in {
+  margin-left: 100%;
+  transform: translateX(0%);
+}
+
+.emoji {
+  height: 1em;
+  vertical-align: middle;
+}
