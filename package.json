@@ -68,7 +68,7 @@
     "package:win": "npm run package-base -- --platform win32 --arch ia32",
     "package:linux": "npm run package-base -- --platform linux --arch x64",
     "postpackage": "node dist/script/postpackage",
-    "release": "semantic-release",
+    "release": "semantic-release --no-ci",
     "prestart": "npm run build",
     "start": "electron ."
   }
