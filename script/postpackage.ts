@@ -1,8 +1,7 @@
-import { ChildProcess, spawn } from 'child_process'
+import { ChildProcess, spawn, SpawnOptions } from 'child_process'
 import { readdir } from 'fs'
-import path from 'path'
 
-function spawnPromise(command: string, args?: string[], options?: {}): Promise<ChildProcess> {
+function spawnPromise(command: string, args?: string[], options?: SpawnOptions): Promise<ChildProcess> {
   return new Promise((resolve, reject) => {
     const proc = spawn(command, args, options)
     proc.once('close', () => resolve(proc))
@@ -19,19 +18,20 @@ readdir(packageDir, (_, files) => {
     .forEach(([name, target]: any) => zipDir(name, target))
 })
 
-async function zipDir(name: string, target: string) {
-  const zipRootDir = path.join(packageDir, name)
-  const outputFileName = `${zipRootDir}.zip`
+async function zipDir(src: string, target: string) {
+  const dest = `${src}.zip`
 
   if (target === 'win32') {
     if (process.env.CIRCLECI) {
-      await spawnPromise('convmv', ['-r', '-f', 'utf8', '-t', 'cp932', '--notest', zipRootDir])
-      await spawnPromise('zip', ['-rq', outputFileName, zipRootDir])
-      await spawnPromise('convmv', ['-r', '-f', 'cp932', '-t', 'utf8', '--notest', zipRootDir])
+      await spawnPromise('convmv', ['-r', '-f', 'utf8', '-t', 'cp932', '--notest', src], { cwd: packageDir })
+      await spawnPromise('zip', ['-rq', dest, src], { cwd: packageDir })
+      await spawnPromise('convmv', ['-r', '-f', 'cp932', '-t', 'utf8', '--notest', src], { cwd: packageDir })
     } else {
-      await spawnPromise('open', ['-W', '-a', 'MacZip4Win', zipRootDir])
+      await spawnPromise('open', ['-W', '-a', 'MacZip4Win', src], { cwd: packageDir })
     }
   } else {
-    await spawnPromise('zip', ['-rq', outputFileName, zipRootDir])
+    await spawnPromise('zip', ['-ryq', dest, src], { cwd: packageDir })
   }
+
+  console.log(`Wrote zip file to ${dest}`)
 }
