@@ -30,6 +30,10 @@
     "stylelint-scss": "3.5.1",
     "typescript": "3.2.4"
   },
+  "files": [
+    "dist/app",
+    "dist/bin"
+  ],
   "homepage": "https://github.com/matzkoh/niconizer#readme",
   "keywords": [
     "chat",
