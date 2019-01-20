@@ -55,11 +55,13 @@
     "build:lib": "npm run build-base -- -t electron lib/index.ts -d dist/app",
     "build:content": "npm run build-base -- -t browser content/index.html -d dist/app/content",
     "build:bin": "npm run build-base -- -t node bin/index.ts -d dist/bin",
+    "build:script": "npm run build-base -- -t node script/* -d dist/script",
     "prepackage": "npm run build",
     "package": "npm-run-all -p package:*",
     "package:mac": "electron-packager . --overwrite --asar --platform=darwin --arch=x64 --out=dist/package",
     "package:win": "electron-packager . --overwrite --asar --platform=win32 --arch=ia32 --out=dist/package",
     "package:linux": "electron-packager . --overwrite --asar --platform=linux --arch=x64 --out=dist/package",
+    "zip": "node dist/script/packaging",
     "prestart": "npm run build",
     "start": "electron ."
   }
