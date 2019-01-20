@@ -10,9 +10,11 @@
   },
   "dependencies": {
     "electron": "4.0.1",
+    "pkg-up": "2.0.0",
     "ws": "6.1.2"
   },
   "devDependencies": {
+    "@types/pkg-up": "2.0.0",
     "@types/ws": "6.0.1",
     "electron-packager": "13.0.1",
     "npm-run-all": "4.1.5",
