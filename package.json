@@ -21,6 +21,7 @@
     "prettier": "1.16.0",
     "rimraf": "2.6.3",
     "sass": "1.16.1",
+    "semantic-release": "15.13.3",
     "stylelint": "9.10.1",
     "stylelint-config-recess-order": "2.0.1",
     "stylelint-config-recommended-scss": "3.2.0",
@@ -62,6 +63,7 @@
     "package:win": "electron-packager . --overwrite --asar --platform=win32 --arch=ia32 --out=dist/package",
     "package:linux": "electron-packager . --overwrite --asar --platform=linux --arch=x64 --out=dist/package",
     "zip": "node dist/script/packaging",
+    "release": "semantic-release",
     "prestart": "npm run build",
     "start": "electron ."
   }

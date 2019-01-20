@@ -1,0 +1,13 @@
+{
+  "publish": [
+    "@semantic-release/npm",
+    {
+      "path": "@semantic-release/github",
+      "assets": [
+        {
+          "path": "dist/package/*.zip"
+        }
+      ]
+    }
+  ]
+}
