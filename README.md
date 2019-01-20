@@ -80,9 +80,8 @@ Build, Run
 $ npm start
 ```
 
-Packaging
+Package
 
 ```bash
 $ npm run package
-$ npm run zip
 ```
