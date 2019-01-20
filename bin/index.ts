@@ -1,6 +1,4 @@
-#!/usr/bin/env node
+import electronPath from 'electron'
+import { spawn } from 'child_process'
 
-const electronPath = require('electron');
-const proc = require('child_process');
-
-proc.spawn(electronPath, ['.']);
+spawn(electronPath as any, ['.'])

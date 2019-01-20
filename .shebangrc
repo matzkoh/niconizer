@@ -1,0 +1,6 @@
+[
+  {
+    "interpreter": "node",
+    "files": ["bin/index.ts"]
+  }
+]

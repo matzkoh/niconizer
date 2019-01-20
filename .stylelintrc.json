@@ -1,0 +1,6 @@
+{
+  "extends": ["stylelint-config-strict-scss", "stylelint-config-recess-order"],
+  "rules": {
+    "max-line-length": 120
+  }
+}

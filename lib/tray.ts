@@ -1,32 +1,33 @@
-const path = require('path');
-const { app, Tray, Menu } = require('electron');
-const { createWindow, closeWindow } = require('./window');
+import path from 'path'
+import { app, Tray, Menu } from 'electron'
+import { createWindow, closeWindow } from './window'
+import iconPath from '../icon/icon_16x16.png'
 
 const template = [
   {
     label: 'Start',
     click: () => {
-      createWindow();
+      createWindow()
     },
   },
   {
     label: 'Stop',
     click: () => {
-      closeWindow();
+      closeWindow()
     },
   },
   {
     label: 'Quit',
     click: () => {
-      app.quit();
+      app.quit()
     },
   },
-];
+]
 
-let tray;
+let tray: Tray
 
-exports.initTray = () => {
-  const contextMenu = Menu.buildFromTemplate(template);
-  tray = new Tray(path.join(__dirname, '../icon/icon_16x16.png'));
-  tray.setContextMenu(contextMenu);
-};
+export function initTray() {
+  const contextMenu = Menu.buildFromTemplate(template)
+  tray = new Tray(path.join(__dirname, iconPath))
+  tray.setContextMenu(contextMenu)
+}

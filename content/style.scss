@@ -1,3 +1,7 @@
+$max-int: 2147483647;
+$comment-color: rgb(255, 255, 255);
+$comment-shadow-color: rgb(0, 0, 0);
+
 html,
 body {
   width: 100vw;
@@ -11,30 +15,32 @@ body {
 
 .comment-container {
   position: fixed;
-  left: 0;
-  right: 0;
   top: 0;
+  right: 0;
   bottom: 0;
-  z-index: 2147483647;
+  left: 0;
+  z-index: $max-int;
   pointer-events: none;
 }
 
 .comment {
-  --size: 8vmin;
-  --font-size: calc(var(--size) * 0.8);
-  --shadow-size: calc(var(--font-size) / 10);
+  $size: 8vh;
+  $font-size: $size * 0.8;
+  $shadow-size: $font-size * 0.1;
+  $shadow: 0 0 $shadow-size $comment-shadow-color;
+
   position: absolute;
-  top: calc(var(--size) * (var(--line) + var(--layer) / 5));
-  padding: calc(var(--size) / 10) 0;
-  font: var(--font-size)/1 sans-serif;
-  color: #fff;
+  top: calc(#{$size} * (var(--line) + var(--layer) / 5));
+  padding: $size * 0.1 0;
+  font: #{$font-size} / 1 sans-serif;
+  color: $comment-color;
+  text-shadow: $shadow, $shadow, $shadow, $shadow;
   white-space: pre;
-  text-shadow: 0 0 var(--shadow-size) #000, 0 0 var(--shadow-size) #000, 0 0 var(--shadow-size) #000;
-  transform: translateX(-100%);
   transition: 5s linear;
+  transform: translateX(-100%);
 }
 
-.comment-in {
+.comment-enter {
   margin-left: 100%;
   transform: translateX(0%);
 }

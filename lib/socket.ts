@@ -1,30 +1,22 @@
-const { Server } = require('ws');
+import { Server } from 'ws'
 
-exports.initServer = async () => {
-  const wss = new Server({ port: 25252 });
+export async function initServer() {
+  const wss = new Server({ port: 25252 })
 
   wss.on('connection', (ws, req) => {
-    if (/^file:/.test(req.headers.origin)) {
-      onConnectRenderer(ws);
+    if (/^file:/.test(String(req.headers.origin))) {
+      ws.on('n:comment', comment => {
+        console.log('[comment]: %s', comment)
+        ws.send(comment)
+      })
     } else {
-      onConnectSender(ws);
+      ws.on('message', message => {
+        wss.clients.forEach(ws => ws.emit('n:comment', message))
+      })
     }
-  });
-
-  function onConnectSender(ws) {
-    ws.on('message', message => {
-      wss.clients.forEach(ws => ws.emit('n:comment', message));
-    });
-  }
-
-  function onConnectRenderer(ws) {
-    ws.on('n:comment', comment => {
-      console.log('[comment]: %s', comment);
-      ws.send(comment);
-    });
-  }
+  })
 
   return new Promise(resolve => {
-    wss.on('listening', resolve);
-  });
-};
+    wss.on('listening', resolve)
+  })
+}

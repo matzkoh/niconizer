@@ -1,11 +1,11 @@
-const path = require('path');
-const electron = require('electron');
-const { BrowserWindow } = require('electron');
+import path from 'path'
+import { screen } from 'electron'
+import { BrowserWindow } from 'electron'
 
-let win = null;
+let win: BrowserWindow
 
-exports.createWindow = () => {
-  const { size } = electron.screen.getPrimaryDisplay();
+export function createWindow() {
+  const { size } = screen.getPrimaryDisplay()
 
   win = new BrowserWindow({
     x: 0,
@@ -19,19 +19,19 @@ exports.createWindow = () => {
     webPreferences: {
       nodeIntegration: false,
     },
-  });
+  })
 
-  win.setIgnoreMouseEvents(true);
-  win.setVisibleOnAllWorkspaces(true);
-  win.loadURL(path.join('file://', __dirname, '../content/index.html'));
+  win.setIgnoreMouseEvents(true)
+  win.setVisibleOnAllWorkspaces(true)
+  win.loadURL(path.join('file://', __dirname, 'content/index.html'))
 
   win.on('closed', () => {
-    win = null;
-  });
-};
+    win = null as any
+  })
+}
 
-exports.closeWindow = () => {
+export function closeWindow() {
   if (win) {
-    win.close();
+    win.close()
   }
-};
+}

@@ -1,11 +1,11 @@
-const { app } = require('electron');
-const { initTray } = require('./tray');
-const { initServer } = require('./socket');
+import { app } from 'electron'
+import { initTray } from './tray'
+import { initServer } from './socket'
 
-app.dock.hide();
+app.dock.hide()
 
-app.on('ready', initTray);
+app.on('ready', initTray)
 
-app.on('window-all-closed', () => {});
+app.on('window-all-closed', () => {})
 
-initServer();
+initServer()
