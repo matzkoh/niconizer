@@ -1,6 +1,7 @@
 import { app } from 'electron'
-import { initTray } from './tray'
+
 import { initServer } from './socket'
+import { initTray } from './tray'
 
 app.dock.hide()
 

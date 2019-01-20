@@ -1,6 +1,5 @@
+import { BrowserWindow, screen } from 'electron'
 import path from 'path'
-import { screen } from 'electron'
-import { BrowserWindow } from 'electron'
 
 let win: BrowserWindow
 

@@ -1,7 +1,8 @@
+import { app, Menu, Tray } from 'electron'
 import path from 'path'
-import { app, Tray, Menu } from 'electron'
-import { createWindow, closeWindow } from './window'
+
 import iconPath from '../icon/icon_16x16.png'
+import { closeWindow, createWindow } from './window'
 
 const template = [
   {

@@ -1,6 +1,6 @@
-import path from 'path'
-import { spawn, ChildProcess } from 'child_process'
+import { ChildProcess, spawn } from 'child_process'
 import { readdir } from 'fs'
+import path from 'path'
 
 function spawnPromise(command: string, args?: string[], options?: {}): Promise<ChildProcess> {
   return new Promise((resolve, reject) => {
