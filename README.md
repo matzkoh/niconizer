@@ -1,5 +1,7 @@
 # niconizer
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/matzkoh/niconizer.svg)](https://greenkeeper.io/)
+
 ## What is this
 
 _niconizer_ is a simple desktop application that has two functional bellow.
