@@ -11,7 +11,7 @@
   "dependencies": {
     "electron": "4.0.2",
     "pkg-up": "2.0.0",
-    "ws": "6.1.2"
+    "ws": "6.1.3"
   },
   "devDependencies": {
     "@types/pkg-up": "2.0.0",
@@ -26,10 +26,7 @@
     "semantic-release": "15.13.3",
     "stylelint": "9.10.1",
     "stylelint-config-recess-order": "2.0.1",
-    "stylelint-config-recommended-scss": "3.2.0",
-    "stylelint-config-standard-scss": "1.0.1",
     "stylelint-config-strict-scss": "0.5.0",
-    "stylelint-scss": "3.5.1",
     "typescript": "3.2.4"
   },
   "files": [
