@@ -1,7 +1,7 @@
 # niconizer
 
-[![Greenkeeper](https://badges.greenkeeper.io/matzkoh/niconizer.svg?style=flat-square)](https://greenkeeper.io/)
-[![npm](https://img.shields.io/npm/v/niconizer.svg?style=flat-square)](https://www.npmjs.com/package/niconizer)
+[![Renovate](https://badges.renovateapi.com/github/matzkoh/niconizer)](https://renovatebot.com/)
+[![npm](https://img.shields.io/npm/v/niconizer.svg)](https://www.npmjs.com/package/niconizer)
 
 ## What is this
 
