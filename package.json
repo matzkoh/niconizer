@@ -60,7 +60,7 @@
     "build:content": "npm run build-base -- -t browser content/index.html -d dist/app/content",
     "build:bin": "npm run build-base -- -t node bin/index.ts -d dist/bin",
     "build:script": "npm run build-base -- -t node script/* -d dist/script",
-    "prepackage": "npm run build",
+    "prepackage": "run-s build",
     "package": "run-p package:*",
     "package-base": "electron-packager . --overwrite --asar --ignore \"^/(?!dist(/app(/|$)|$)|node_modules(/|$)|package\\.json$)\" --out dist/package",
     "package:mac": "npm run package-base -- --platform darwin --arch x64",
@@ -68,7 +68,8 @@
     "package:linux": "npm run package-base -- --platform linux --arch x64",
     "postpackage": "node dist/script/postpackage",
     "release": "semantic-release --no-ci",
-    "prestart": "npm run build",
-    "start": "electron ."
+    "prestart": "run-s build",
+    "start": "electron .",
+    "test": "run-s build"
   }
 }
