@@ -9,7 +9,7 @@
     "url": "https://github.com/matzkoh/niconizer/issues"
   },
   "dependencies": {
-    "electron": "4.0.4",
+    "electron": "4.0.5",
     "pkg-up": "2.0.0",
     "ws": "6.1.3"
   },
