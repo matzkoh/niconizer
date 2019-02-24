@@ -41,6 +41,8 @@ Available clients are in the [section](#clients) bellow.
 
 - Slack
   - [niconizer-slack](https://github.com/matzkoh/niconizer-slack)
+- Twitter
+  - [niconizer-tweetdeck](https://github.com/matzkoh/userscripts/tree/master/packages/niconizer-tweetdeck)
 
 ## Develop client
 
