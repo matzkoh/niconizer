@@ -11,7 +11,7 @@
   "dependencies": {
     "electron": "4.0.7",
     "pkg-up": "2.0.0",
-    "ws": "6.1.4"
+    "ws": "6.2.0"
   },
   "devDependencies": {
     "@types/pkg-up": "2.0.0",
