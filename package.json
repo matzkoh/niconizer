@@ -29,6 +29,10 @@
     "stylelint-config-strict-scss": "0.5.0",
     "typescript": "3.3.3333"
   },
+  "engines": {
+    "node": ">= 10",
+    "npm": ">= 6.4"
+  },
   "files": [
     "dist/app",
     "dist/bin"
