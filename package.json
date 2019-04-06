@@ -27,7 +27,7 @@
     "stylelint": "9.10.1",
     "stylelint-config-recess-order": "2.0.1",
     "stylelint-config-strict-scss": "0.5.0",
-    "typescript": "3.4.1"
+    "typescript": "3.4.2"
   },
   "engines": {
     "node": ">= 10",
