@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "electron": "4.1.4",
-    "pkg-up": "3.0.1",
+    "pkg-up": "3.1.0",
     "ws": "6.2.1"
   },
   "devDependencies": {
