@@ -22,7 +22,7 @@
     "parcel-plugin-shebang": "1.2.5",
     "prettier": "1.17.0",
     "rimraf": "2.6.3",
-    "sass": "1.18.0",
+    "sass": "1.19.0",
     "semantic-release": "15.13.3",
     "stylelint": "10.0.1",
     "stylelint-config-recess-order": "2.0.2",
