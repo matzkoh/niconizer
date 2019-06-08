@@ -24,7 +24,7 @@
     "rimraf": "2.6.3",
     "sass": "1.21.0",
     "semantic-release": "15.13.12",
-    "stylelint": "10.0.1",
+    "stylelint": "10.1.0",
     "stylelint-config-recess-order": "2.0.2",
     "stylelint-config-strict-scss": "0.5.0",
     "typescript": "3.5.1"
