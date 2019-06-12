@@ -23,7 +23,7 @@
     "prettier": "1.18.2",
     "rimraf": "2.6.3",
     "sass": "1.21.0",
-    "semantic-release": "15.13.12",
+    "semantic-release": "15.13.16",
     "stylelint": "10.1.0",
     "stylelint-config-recess-order": "2.0.2",
     "stylelint-config-strict-scss": "0.5.0",
