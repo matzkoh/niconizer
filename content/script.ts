@@ -1,52 +1,62 @@
-const container = document.querySelector('.comment-container') as HTMLDivElement
+main()
 
-container.addEventListener('transitionend', event => {
-  document.adoptNode(event.target as Node)
-})
+function main() {
+  const container = document.querySelector('.comment-container')
 
-new WebSocket('ws://localhost:25252/').addEventListener('message', event => {
-  const el = document.createElement('div')
-  el.className = 'comment comment-enter'
-  el.innerHTML = event.data
-  container.appendChild(el)
+  if (!container) {
+    return
+  }
 
-  const { offsetWidth, offsetHeight } = el
-  let layer = 0
-  let line = 0
+  container.addEventListener('transitionend', ({ target }) => {
+    if (target instanceof Node) {
+      document.adoptNode(target)
+    }
+  })
 
-  while (true) {
+  new WebSocket('ws://localhost:25252/').addEventListener('message', event => {
+    const el = document.createElement('div')
+    el.className = 'comment comment-enter'
+    el.innerHTML = event.data
+    container.appendChild(el)
+
+    const { offsetWidth, offsetHeight } = el
+    let layer = 0
+    let line = 0
+
     while (true) {
-      const commentsOfCurrentLine = container.querySelectorAll(`[data-layer="${layer}"][data-line="${line}"]`)
-      const lastComment = commentsOfCurrentLine[commentsOfCurrentLine.length - 1]
-      if (!lastComment) {
+      while (true) {
+        const comments = container.querySelectorAll(`[data-layer="${layer}"][data-line="${line}"]`)
+        const lastComment = comments[comments.length - 1]
+
+        if (!lastComment) {
+          break
+        }
+
+        if (checkCollision(lastComment, offsetWidth)) {
+          line++
+          continue
+        }
+
         break
       }
 
-      const isProtruded = checkCollision(lastComment, offsetWidth)
-      if (isProtruded) {
-        line++
-        continue
+      if (!line || offsetHeight * (line + 0.5) <= innerHeight) {
+        break
       }
 
-      break
+      layer++
+      line = 0
     }
 
-    if (!line || offsetHeight * (line + 0.5) <= innerHeight) {
-      break
-    }
-
-    layer++
-    line = 0
-  }
-
-  el.setAttribute('data-line', `${line}`)
-  el.setAttribute('data-layer', `${layer}`)
-  el.style.setProperty('--line', `${line}`)
-  el.style.setProperty('--layer', `${layer}`)
-  el.classList.remove('comment-enter')
-})
+    el.setAttribute('data-line', `${line}`)
+    el.setAttribute('data-layer', `${layer}`)
+    el.style.setProperty('--line', `${line}`)
+    el.style.setProperty('--layer', `${layer}`)
+    el.classList.remove('comment-enter')
+  })
+}
 
 function checkCollision(el: Element, width: number) {
-  const a = el.getBoundingClientRect()
-  return innerWidth < a.right || innerWidth + a.width < a.right + width
+  const r = el.getBoundingClientRect()
+  return innerWidth < r.right || innerWidth + r.width < r.right + width
 }
