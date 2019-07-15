@@ -1,18 +1,19 @@
+version: 2.1
+
 orbs:
-  repo:
+  local:
     executors:
       default:
         docker:
           - image: circleci/node:12
 
     commands:
-      test:
+      package:
         steps:
           - checkout
           - restore_cache:
               keys:
-                - &cache_key npm_cache-{{ .Branch }}
-                - npm_cache-
+                - &cache_key cache-npm-{{ .Branch }}
 
           - run:
               name: Install Dependencies
@@ -24,15 +25,18 @@ orbs:
                 - ~/.npm
 
           - run:
+              name: Setup build
+              command: |
+                sudo dpkg --add-architecture i386
+                sudo apt update
+                sudo apt install -y wine32 convmv
+
+          - run:
               name: Run Test
-              command: npm test
+              command: npm run package
 
       release:
         steps:
-          - run:
-              name: Package
-              command: npm run package
-
           - run:
               name: Release
               command: npx semantic-release
@@ -41,26 +45,24 @@ orbs:
       default:
         executor: default
         steps:
-          - test
+          - package
 
       master:
         executor: default
         steps:
-          - test
+          - package
           - release
-
-version: 2.1
 
 workflows:
   main:
     jobs:
-      - repo/default:
+      - local/default:
           filters:
             branches:
               ignore:
                 - master
 
-      - repo/master:
+      - local/master:
           filters:
             branches:
               only:
