@@ -1,10 +1,10 @@
 import { Server } from 'ws'
 
-export async function initServer() {
+export async function initServer(): Promise<void> {
   const wss = new Server({ port: 25252 })
 
   wss.on('connection', (ws, req) => {
-    if (/^file:/.test(String(req.headers.origin))) {
+    if (String(req.headers.origin).startsWith('file:')) {
       ws.on('n:comment', comment => {
         console.log('[comment]: %s', comment)
         ws.send(comment)

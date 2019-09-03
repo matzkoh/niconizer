@@ -1,6 +1,6 @@
 main()
 
-function main() {
+function main(): void {
   const container = document.querySelector('.comment-container')
 
   if (!container) {
@@ -56,7 +56,7 @@ function main() {
   })
 }
 
-function checkCollision(el: Element, width: number) {
+function checkCollision(el: Element, width: number): boolean {
   const r = el.getBoundingClientRect()
   return innerWidth < r.right || innerWidth + r.width < r.right + width
 }
