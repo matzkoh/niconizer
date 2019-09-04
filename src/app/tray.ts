@@ -1,25 +1,27 @@
-import { app, Menu, Tray } from 'electron'
 import path from 'path'
 
-import iconPath from '../icon/icon_16x16.png'
+import { Menu, Tray, app } from 'electron'
+
+import iconPath from '../../icon/icon_16x16.png'
+
 import { closeWindow, createWindow } from './window'
 
 const template = [
   {
     label: 'Start',
-    click: () => {
+    click(): void {
       createWindow()
     },
   },
   {
     label: 'Stop',
-    click: () => {
+    click(): void {
       closeWindow()
     },
   },
   {
     label: 'Quit',
-    click: () => {
+    click(): void {
       app.quit()
     },
   },
@@ -27,7 +29,7 @@ const template = [
 
 let tray: Tray
 
-export function initTray() {
+export function initTray(): void {
   const contextMenu = Menu.buildFromTemplate(template)
   tray = new Tray(path.join(__dirname, iconPath))
   tray.setContextMenu(contextMenu)

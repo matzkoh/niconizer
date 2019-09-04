@@ -5,7 +5,6 @@
 [circleci]: https://circleci.com/gh/matzkoh/niconizer
 [renovate]: https://renovatebot.com/
 [npm]: https://www.npmjs.com/package/niconizer
-
 [circleci-badge]: https://circleci.com/gh/matzkoh/niconizer.svg?style=shield
 [renovate-badge]: https://badges.renovateapi.com/github/matzkoh/niconizer
 [npm-badge]: https://img.shields.io/npm/v/niconizer.svg
@@ -63,21 +62,21 @@ Available clients are in the [section](#clients) bellow.
 
 ```js
 // WebSocket implementation for nodejs
-const WebSocket = require('ws')
+const WebSocket = require("ws");
 
 // niconizer server
-const ws = new WebSocket('ws://localhost:25252/')
+const ws = new WebSocket("ws://localhost:25252/");
 
 // any html content
-ws.send('<b>Hello, world!</b>')
+ws.send("<b>Hello, world!</b>");
 ```
 
 ### Browser (assumed use from userscript such as Greasemonkey)
 
 ```js
-const ws = new WebSocket('ws://localhost:25252/')
+const ws = new WebSocket("ws://localhost:25252/");
 
-ws.send('<b>Hello, world!</b>')
+ws.send("<b>Hello, world!</b>");
 ```
 
 ## Contributing

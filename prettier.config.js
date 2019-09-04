@@ -1,3 +1,4 @@
+/** @type {import('prettier').Options} */
 module.exports = {
   printWidth: 120,
   semi: false,
@@ -5,9 +6,12 @@ module.exports = {
   trailingComma: 'all',
   overrides: [
     {
-      files: 'package.json',
+      files: '*.md',
       options: {
-        parser: 'package-json',
+        printWidth: 80,
+        semi: true,
+        singleQuote: false,
+        trailingComma: 'none',
       },
     },
   ],

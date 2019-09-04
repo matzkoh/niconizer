@@ -1,9 +1,10 @@
-import { BrowserWindow, screen } from 'electron'
 import path from 'path'
+
+import { BrowserWindow, screen } from 'electron'
 
 let win: BrowserWindow
 
-export function createWindow() {
+export function createWindow(): void {
   const { size } = screen.getPrimaryDisplay()
 
   win = new BrowserWindow({
@@ -29,7 +30,7 @@ export function createWindow() {
   })
 }
 
-export function closeWindow() {
+export function closeWindow(): void {
   if (win) {
     win.close()
   }

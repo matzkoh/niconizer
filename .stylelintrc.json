@@ -1,6 +1,7 @@
 {
-  "extends": ["stylelint-config-strict-scss", "stylelint-config-recess-order"],
+  "extends": ["@wemake-services/stylelint-config-scss", "stylelint-config-recess-order"],
   "rules": {
-    "max-line-length": 120
+    "max-line-length": 120,
+    "plugin/no-low-performance-animation-properties": null
   }
 }

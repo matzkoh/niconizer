@@ -36,7 +36,9 @@ body {
   color: $comment-color;
   text-shadow: $shadow, $shadow, $shadow, $shadow;
   white-space: pre;
-  transition: 5s linear;
+  transition-timing-function: linear;
+  transition-duration: 5s;
+  transition-property: transform, margin-left;
   transform: translateX(-100%);
 }
 

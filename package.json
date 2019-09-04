@@ -1,23 +1,75 @@
 {
   "name": "niconizer",
-  "description": "Desktop application that overlay comments on the screen directly.",
   "version": "0.0.0-development",
-  "license": "MIT",
-  "bin": {
-    "niconizer": "dist/bin/index.js"
-  },
+  "description": "Desktop application that overlay comments on the screen directly.",
+  "keywords": [
+    "chat",
+    "comment",
+    "desktop",
+    "electron",
+    "gadget",
+    "nicovideo"
+  ],
+  "homepage": "https://github.com/matzkoh/niconizer#readme",
   "bugs": {
     "url": "https://github.com/matzkoh/niconizer/issues"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matzkoh/niconizer.git"
+  },
+  "license": "MIT",
+  "files": [
+    "dist/app",
+    "dist/bin"
+  ],
+  "main": "dist/app",
+  "bin": {
+    "niconizer": "dist/bin/index.js"
+  },
+  "scripts": {
+    "prebuild": "run-s lint clean:dist",
+    "build": "run-p build:*",
+    "build-base": "parcel build --no-source-maps --public-url .",
+    "build:app": "npm run build-base -- -t electron src/app/index.ts -d dist/app",
+    "build:bin": "npm run build-base -- -t node src/bin/index.ts -d dist/bin",
+    "build:content": "npm run build-base -- -t browser src/content/index.html -d dist/app/content",
+    "clean:dist": "rimraf dist",
+    "fix": "run-p fix:*",
+    "fix:eslint": "npm run lint:eslint -- --fix",
+    "fix:prettier": "npm run lint:prettier -- --write",
+    "lint": "run-p lint:*",
+    "lint:eslint": "eslint --ext js,ts .",
+    "lint:prettier": "prettier -l \"**/*.{json,md}\"",
+    "lint:stylelint": "stylelint \"src/**/*.scss\" \"src/**/*.css\"",
+    "lint:type": "tsc",
+    "prepackage": "npm run build",
+    "package": "run-p package:*",
+    "postpackage": "ts-node script/postpackage",
+    "package-base": "electron-packager . --overwrite --asar --ignore \"^/(?!dist(/app(/|$)|$)|node_modules(/|$)|package\\.json$)\" --out dist/package --download.cacheRoot .electron",
+    "package:linux": "npm run package-base -- --platform linux --arch x64",
+    "package:mac": "npm run package-base -- --platform darwin --arch x64",
+    "package:win": "npm run package-base -- --platform win32 --arch x64",
+    "prestart": "npm run build",
+    "start": "electron .",
+    "test": "npm run build"
+  },
   "dependencies": {
     "electron": "6.0.7",
-    "pkg-up": "3.1.0",
+    "pkg-dir": "4.2.0",
     "ws": "7.1.2"
   },
   "devDependencies": {
     "@types/pkg-up": "3.1.0",
     "@types/ws": "6.0.3",
+    "@typescript-eslint/eslint-plugin": "2.0.0",
+    "@typescript-eslint/parser": "2.0.0",
+    "@wemake-services/stylelint-config-scss": "0.1.4",
     "electron-packager": "14.0.5",
+    "eslint": "6.1.0",
+    "eslint-config-prettier": "6.0.0",
+    "eslint-plugin-import": "2.18.2",
+    "eslint-plugin-prettier": "3.1.0",
     "npm-run-all": "4.1.5",
     "parcel": "1.12.3",
     "parcel-plugin-shebang": "1.2.8",
@@ -29,51 +81,11 @@
     "stylelint": "10.1.0",
     "stylelint-config-recess-order": "2.0.3",
     "stylelint-config-strict-scss": "0.5.0",
+    "ts-node": "8.3.0",
     "typescript": "3.6.2"
   },
   "engines": {
     "node": ">= 10",
     "npm": ">= 6.4"
-  },
-  "files": [
-    "dist/app",
-    "dist/bin"
-  ],
-  "homepage": "https://github.com/matzkoh/niconizer#readme",
-  "keywords": [
-    "chat",
-    "comment",
-    "desktop",
-    "electron",
-    "gadget",
-    "nicovideo"
-  ],
-  "main": "dist/app",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/matzkoh/niconizer.git"
-  },
-  "scripts": {
-    "clean:dist": "rimraf dist",
-    "lint": "run-p lint:*",
-    "lint:css": "stylelint content/**/*.scss content/**/*.css",
-    "lint:format": "prettier -l {bin,content,lib,types}/**",
-    "prebuild": "run-s lint clean:dist",
-    "build": "run-p build:*",
-    "build-base": "parcel build --no-source-maps --no-content-hash --public-url .",
-    "build:lib": "npm run build-base -- -t electron lib/index.ts -d dist/app",
-    "build:content": "npm run build-base -- -t browser content/index.html -d dist/app/content",
-    "build:bin": "npm run build-base -- -t node bin/index.ts -d dist/bin",
-    "build:script": "npm run build-base -- -t node script/* -d dist/script",
-    "prepackage": "npm run build",
-    "package": "run-p package:*",
-    "package-base": "electron-packager . --overwrite --asar --ignore \"^/(?!dist(/app(/|$)|$)|node_modules(/|$)|package\\.json$)\" --out dist/package --download.cacheRoot \"~/.cache/electron\"",
-    "package:mac": "npm run package-base -- --platform darwin --arch x64",
-    "package:win": "npm run package-base -- --platform win32 --arch x64",
-    "package:linux": "npm run package-base -- --platform linux --arch x64",
-    "postpackage": "node dist/script/postpackage",
-    "prestart": "npm run build",
-    "start": "electron .",
-    "test": "npm run build"
   }
 }
