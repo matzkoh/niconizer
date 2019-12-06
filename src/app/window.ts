@@ -1,8 +1,7 @@
+import { BrowserWindow, screen } from 'electron'
 import path from 'path'
 
-import { BrowserWindow, screen } from 'electron'
-
-let win: BrowserWindow
+let win: BrowserWindow | undefined
 
 export function createWindow(): void {
   const { size } = screen.getPrimaryDisplay()
@@ -26,12 +25,10 @@ export function createWindow(): void {
   win.loadURL(path.join('file://', __dirname, 'content/index.html'))
 
   win.on('closed', () => {
-    win = null as any
+    win = undefined
   })
 }
 
 export function closeWindow(): void {
-  if (win) {
-    win.close()
-  }
+  win?.close()
 }
