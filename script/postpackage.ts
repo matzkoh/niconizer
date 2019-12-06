@@ -1,4 +1,4 @@
-import { ChildProcess, SpawnOptions, spawn } from 'child_process'
+import { ChildProcess, spawn, SpawnOptions } from 'child_process'
 import { readdir } from 'fs'
 
 function spawnPromise(command: string, args?: string[], options?: SpawnOptions): Promise<ChildProcess> {
@@ -14,8 +14,8 @@ const packageDir = 'dist/package'
 readdir(packageDir, (_, files) => {
   files
     .map(name => /^[^-]+-(\w+)-.+$/.exec(name))
-    .filter(Boolean)
-    .map(([name, target]: any) => zipDir(name, target))
+    .filter((a): a is RegExpExecArray => !!a)
+    .map(([name, target]) => zipDir(name, target))
 })
 
 async function zipDir(src: string, target: string): Promise<void> {
