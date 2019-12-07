@@ -1,7 +1,7 @@
 import { ChildProcess, spawn, SpawnOptions } from 'child_process'
 import { readdir } from 'fs'
 
-function spawnPromise(command: string, args?: string[], options?: SpawnOptions): Promise<ChildProcess> {
+function spawnPromise(command: string, args: string[], options: SpawnOptions): Promise<ChildProcess> {
   return new Promise((resolve, reject) => {
     const proc = spawn(command, args, options)
     proc.once('close', () => resolve(proc))
