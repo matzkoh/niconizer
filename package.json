@@ -80,7 +80,7 @@
     "prettier": "1.19.1",
     "prettier-plugin-packagejson": "2.0.6",
     "rimraf": "3.0.0",
-    "sass": "1.23.7",
+    "sass": "1.24.0",
     "semantic-release": "15.13.31",
     "stylelint": "12.0.0",
     "stylelint-config-recess-order": "2.0.3",
