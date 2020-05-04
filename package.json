@@ -85,7 +85,7 @@
     "stylelint": "13.3.3",
     "stylelint-config-recess-order": "2.0.4",
     "stylelint-config-strict-scss": "0.5.0",
-    "ts-node": "8.9.1",
+    "ts-node": "8.10.1",
     "typescript": "3.8.3"
   },
   "engines": {
