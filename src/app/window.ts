@@ -3,7 +3,11 @@ import path from 'path'
 
 let win: BrowserWindow | undefined
 
-export function createWindow(): void {
+export function openWindow(): void {
+  if (win) {
+    return
+  }
+
   const { size } = screen.getPrimaryDisplay()
 
   win = new BrowserWindow({

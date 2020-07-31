@@ -10,14 +10,7 @@
     "gadget",
     "nicovideo"
   ],
-  "homepage": "https://github.com/matzkoh/niconizer#readme",
-  "bugs": {
-    "url": "https://github.com/matzkoh/niconizer/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/matzkoh/niconizer.git"
-  },
+  "repository": "github:matzkoh/niconizer",
   "license": "MIT",
   "main": "dist/app",
   "bin": {
@@ -61,7 +54,6 @@
     "ws": "7.3.1"
   },
   "devDependencies": {
-    "@types/pkg-up": "3.1.0",
     "@types/ws": "7.2.6",
     "@typescript-eslint/eslint-plugin": "3.7.1",
     "@typescript-eslint/parser": "3.7.1",
@@ -81,15 +73,14 @@
     "prettier-plugin-packagejson": "2.2.5",
     "rimraf": "3.0.2",
     "sass": "1.26.10",
-    "semantic-release": "17.1.1",
     "stylelint": "13.6.1",
-    "stylelint-config-recess-order": "2.0.4",
+    "stylelint-config-recess-order": "2.1.0",
     "stylelint-config-strict-scss": "0.5.0",
     "ts-node": "8.10.2",
     "typescript": "3.9.7"
   },
   "engines": {
-    "node": ">= 10",
-    "npm": ">= 6.4"
+    "node": ">= 12",
+    "npm": ">= 6.14"
   }
 }
