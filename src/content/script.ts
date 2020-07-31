@@ -20,6 +20,7 @@ function main(): void {
     container.appendChild(el)
 
     const { offsetWidth, offsetHeight } = el
+
     let layer = 0
     let line = 0
 
@@ -34,6 +35,7 @@ function main(): void {
 
         if (checkCollision(lastComment, offsetWidth)) {
           line++
+
           continue
         }
 
@@ -58,5 +60,6 @@ function main(): void {
 
 function checkCollision(el: Element, width: number): boolean {
   const r = el.getBoundingClientRect()
+
   return innerWidth < r.right || innerWidth + r.width < r.right + width
 }

@@ -1,3 +1,5 @@
+#!/usr/bin/env ts-node-script
+
 import { ChildProcess, spawn, SpawnOptions } from 'child_process'
 import { readdir } from 'fs'
 
