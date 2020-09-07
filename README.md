@@ -32,8 +32,6 @@ $ niconizer
 
 Then the WebSocket server starts up on your computer and listen for connections.
 
-In the tray menu, click `Start` command to activate showing content sent from clients.
-
 Available clients are in the [section](#clients) bellow.
 
 ## Tray Icon Menu
@@ -77,6 +75,12 @@ ws.send("<b>Hello, world!</b>");
 const ws = new WebSocket("ws://localhost:25252/");
 
 ws.send("<b>Hello, world!</b>");
+```
+
+### Shell Script
+
+```sh
+wscat -c ws://localhost:25252 -x "$(jq -r '.name' package.json)"
 ```
 
 ## Contributing
