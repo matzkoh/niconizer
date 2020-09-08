@@ -8,18 +8,38 @@ function main(): void {
   }
 
   container.addEventListener('transitionend', ({ target }) => {
-    if (target instanceof Node) {
-      document.adoptNode(target)
+    if (target instanceof Element) {
+      target.remove()
     }
   })
 
+  const lineHeight = (() => {
+    const el = document.createElement('div')
+    el.className = 'comment'
+    el.style.visibility = 'hidden'
+    el.textContent = 'M'
+    container.appendChild(el)
+
+    const { offsetHeight } = el
+    el.remove()
+
+    return offsetHeight
+  })()
+
   new WebSocket('ws://localhost:25252/').addEventListener('message', event => {
     const el = document.createElement('div')
-    el.className = 'comment comment-enter'
+    el.className = 'comment flip-enter-to'
     el.innerHTML = event.data
     container.appendChild(el)
 
-    const { offsetWidth, offsetHeight } = el
+    const { offsetWidth, offsetHeight, offsetLeft: to } = el
+
+    el.classList.remove('flip-enter-to')
+
+    const from = el.offsetLeft
+
+    el.classList.add('flip-enter-active')
+    el.style.transform = `translateX(${to - from}px)`
 
     let layer = 0
     let line = 0
@@ -27,13 +47,13 @@ function main(): void {
     while (true) {
       while (true) {
         const comments = container.querySelectorAll(`[data-layer="${layer}"][data-line="${line}"]`)
-        const lastComment = comments[comments.length - 1]
+        const lastCommentOfLine = comments[comments.length - 1]
 
-        if (!lastComment) {
+        if (!lastCommentOfLine) {
           break
         }
 
-        if (checkCollision(lastComment, offsetWidth)) {
+        if (checkCollision(lastCommentOfLine, offsetWidth)) {
           line++
 
           continue
@@ -42,7 +62,7 @@ function main(): void {
         break
       }
 
-      if (!line || offsetHeight * (line + 0.5) <= innerHeight) {
+      if (!line || lineHeight * line + offsetHeight <= innerHeight) {
         break
       }
 
@@ -54,12 +74,11 @@ function main(): void {
     el.setAttribute('data-layer', `${layer}`)
     el.style.setProperty('--line', `${line}`)
     el.style.setProperty('--layer', `${layer}`)
-    el.classList.remove('comment-enter')
   })
 }
 
 function checkCollision(el: Element, width: number): boolean {
   const r = el.getBoundingClientRect()
 
-  return innerWidth < r.right || innerWidth + r.width < r.right + width
+  return innerWidth < r.right || innerWidth - r.left < width
 }
