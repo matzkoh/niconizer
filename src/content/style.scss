@@ -28,23 +28,25 @@ body {
   $font-size: $size * 0.8;
   $shadow-size: $font-size * 0.1;
   $shadow: 0 0 $shadow-size $comment-shadow-color;
+  $end: calc(100% + #{$shadow-size});
 
   position: absolute;
   top: calc(#{$size} * (var(--line) + var(--layer) / 5));
+  left: $end;
   padding: $size * 0.1 0;
   font: #{$font-size} / 1 sans-serif;
   color: $comment-color;
   text-shadow: $shadow, $shadow, $shadow, $shadow;
   white-space: pre;
-  transition-timing-function: linear;
-  transition-duration: 5s;
-  transition-property: transform, margin-left;
-  transform: translateX(-100%);
-}
 
-.comment-enter {
-  margin-left: 100%;
-  transform: translateX(0%);
+  &.flip-enter-active {
+    transition: transform 8s linear;
+  }
+
+  &.flip-enter-to {
+    right: $end;
+    left: auto;
+  }
 }
 
 .emoji {

@@ -19,9 +19,6 @@ export function openWindow(): void {
     transparent: true,
     alwaysOnTop: true,
     hasShadow: false,
-    webPreferences: {
-      nodeIntegration: false,
-    },
   })
 
   win.setIgnoreMouseEvents(true)
