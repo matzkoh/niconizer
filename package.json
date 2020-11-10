@@ -55,8 +55,8 @@
   },
   "devDependencies": {
     "@types/ws": "7.2.9",
-    "@typescript-eslint/eslint-plugin": "4.6.1",
-    "@typescript-eslint/parser": "4.6.1",
+    "@typescript-eslint/eslint-plugin": "4.7.0",
+    "@typescript-eslint/parser": "4.7.0",
     "@wemake-services/stylelint-config-scss": "0.4.1",
     "electron-packager": "15.1.0",
     "eslint": "7.13.0",
