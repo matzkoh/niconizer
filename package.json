@@ -49,7 +49,7 @@
     "test": "npm run build"
   },
   "dependencies": {
-    "electron": "11.0.5",
+    "electron": "11.1.0",
     "pkg-dir": "5.0.0",
     "ws": "7.4.1"
   },
