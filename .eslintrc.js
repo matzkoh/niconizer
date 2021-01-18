@@ -55,7 +55,8 @@ module.exports = {
       { blankLine: 'any', prev: 'cjs-export', next: 'cjs-export' },
       { blankLine: 'any', prev: 'case', next: ['case', 'default'] },
     ],
-    'simple-import-sort/sort': 'error',
+    'simple-import-sort/imports': 'error',
+    'simple-import-sort/exports': 'error',
   },
   overrides: [
     {
@@ -64,7 +65,8 @@ module.exports = {
         '@typescript-eslint/no-var-requires': 'off',
         'import/no-commonjs': 'off',
         'import/order': ['error', { 'newlines-between': 'always' }],
-        'simple-import-sort/sort': 'off',
+        'simple-import-sort/imports': 'off',
+        'simple-import-sort/exports': 'off',
         'sort-imports': ['error', { ignoreDeclarationSort: true }],
       },
     },
