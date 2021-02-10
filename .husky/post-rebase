@@ -1,0 +1,4 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+git diff "HEAD@{1}" --name-only | grep -Eq "^package(-lock)?\.json$" && npm install
