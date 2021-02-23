@@ -3,10 +3,10 @@
 [![npm][npm-badge]][npm]
 
 [circleci]: https://circleci.com/gh/matzkoh/niconizer
-[renovate]: https://renovatebot.com/
-[npm]: https://www.npmjs.com/package/niconizer
 [circleci-badge]: https://circleci.com/gh/matzkoh/niconizer.svg?style=shield
-[renovate-badge]: https://badges.renovateapi.com/github/matzkoh/niconizer
+[renovate]: https://renovatebot.com/
+[renovate-badge]: https://img.shields.io/badge/renovate-enabled-brightgreen
+[npm]: https://www.npmjs.com/package/niconizer
 [npm-badge]: https://img.shields.io/npm/v/niconizer.svg
 
 # niconizer
