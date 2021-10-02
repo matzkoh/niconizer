@@ -54,7 +54,7 @@
   "dependencies": {
     "electron": "14.0.2",
     "pkg-dir": "5.0.0",
-    "ws": "8.2.2"
+    "ws": "8.2.3"
   },
   "devDependencies": {
     "@types/ws": "7.4.7",
