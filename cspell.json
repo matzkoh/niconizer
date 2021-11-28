@@ -1,0 +1,21 @@
+{
+  "version": "0.2",
+  "ignorePaths": [],
+  "dictionaryDefinitions": [],
+  "dictionaries": [],
+  "words": [
+    "asar",
+    "eqeqeq",
+    "niconizer",
+    "nicovideo",
+    "pinst",
+    "postpackage",
+    "postpublish",
+    "tweetdeck",
+    "userscript",
+    "wemake",
+    "wscat"
+  ],
+  "ignoreWords": [],
+  "import": []
+}

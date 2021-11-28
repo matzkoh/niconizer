@@ -1,7 +1,7 @@
 import { once } from 'events'
 import { Server } from 'ws'
 
-export async function initServer(port = 25252): Promise<void> {
+export async function initServer(port = 25252) {
   const wss = new Server({ port })
 
   wss.on('connection', (ws, req) => {
@@ -11,11 +11,13 @@ export async function initServer(port = 25252): Promise<void> {
         ws.send(comment)
       })
     } else {
-      ws.on('message', message => {
-        wss.clients.forEach(ws => ws.emit('n:comment', message))
+      ws.on('message', data => {
+        wss.clients.forEach(ws => ws.emit('n:comment', data.toString()))
       })
     }
   })
 
   await once(wss, 'listening')
+
+  return wss
 }
