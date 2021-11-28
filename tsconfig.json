@@ -2,9 +2,8 @@
   "compilerOptions": {
     "target": "esnext",
     "lib": ["esnext", "dom"],
-    "module": "commonjs",
+    "module": "esnext",
     "strict": true,
-    "experimentalDecorators": true,
     "moduleResolution": "node",
     "esModuleInterop": true,
     "noEmit": true
