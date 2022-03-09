@@ -53,10 +53,10 @@
   "dependencies": {
     "electron": "17.1.1",
     "pkg-dir": "5.0.0",
-    "ws": "8.4.2"
+    "ws": "8.5.0"
   },
   "devDependencies": {
-    "@types/ws": "8.2.3",
+    "@types/ws": "8.5.2",
     "@typescript-eslint/eslint-plugin": "5.13.0",
     "@typescript-eslint/parser": "5.13.0",
     "electron-packager": "15.4.0",
