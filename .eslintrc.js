@@ -19,13 +19,6 @@ module.exports = {
     '@typescript-eslint/ban-types': ['error', { extendDefaults: true, types: { '{}': false } }],
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
-    '@typescript-eslint/naming-convention': [
-      'error',
-      { selector: 'default', format: ['camelCase'], leadingUnderscore: 'allow' },
-      { selector: 'variable', format: ['camelCase', 'PascalCase', 'UPPER_CASE'], leadingUnderscore: 'allow' },
-      { selector: 'property', format: ['camelCase', 'snake_case', 'UPPER_CASE'] },
-      { selector: 'typeLike', format: ['PascalCase'] },
-    ],
     '@typescript-eslint/no-empty-function': 'off',
     '@typescript-eslint/no-unused-vars': process.env.CI ? 'error' : 'warn',
     '@typescript-eslint/no-use-before-define': 'off',
