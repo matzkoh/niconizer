@@ -2,5 +2,6 @@
   "extends": ["stylelint-config-standard-scss", "stylelint-config-recess-order"],
   "rules": {
     "max-line-length": 120
-  }
+  },
+  "ignoreFiles": ["!**/*.{css,scss}"]
 }

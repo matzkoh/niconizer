@@ -21,8 +21,7 @@
     "dist/bin"
   ],
   "scripts": {
-    "prebuild": "run-s lint clean:dist",
-    "build": "run-p build:*",
+    "build": "npm-run-all clean:dist -p build:*",
     "build-base": "parcel build --no-source-maps --public-url .",
     "build:app": "npm run build-base -- -t electron-main src/app/index.ts -d dist/app",
     "build:bin": "npm run build-base -- -t node src/bin/index.ts -d dist/bin",
@@ -34,9 +33,9 @@
     "fix:stylelint": "npm run lint:stylelint -- --fix",
     "postinstall": "husky install",
     "lint": "run-p lint:*",
-    "lint:eslint": "eslint --ext js,ts .",
-    "lint:prettier": "prettier -l \"**/*.{html,json,md,yml}\"",
-    "lint:stylelint": "stylelint \"**/*.{css,scss}\"",
+    "lint:eslint": "eslint .",
+    "lint:prettier": "prettier -c .",
+    "lint:stylelint": "stylelint .",
     "lint:type": "tsc",
     "package": "run-p package:*",
     "postpackage": "ts-node script/postpackage",
@@ -47,7 +46,7 @@
     "prepublishOnly": "pinst --disable",
     "postpublish": "pinst --enable",
     "start": "electron .",
-    "test": "npm run build"
+    "test": "npm run lint"
   },
   "dependencies": {
     "electron": "22.0.0",
@@ -55,9 +54,10 @@
     "ws": "8.11.0"
   },
   "devDependencies": {
+    "@types/node": "18.11.18",
     "@types/ws": "8.5.4",
-    "@typescript-eslint/eslint-plugin": "5.13.0",
-    "@typescript-eslint/parser": "5.13.0",
+    "@typescript-eslint/eslint-plugin": "5.48.1",
+    "@typescript-eslint/parser": "5.48.1",
     "electron-packager": "17.1.1",
     "eslint": "8.31.0",
     "eslint-config-prettier": "8.6.0",
@@ -70,7 +70,7 @@
     "parcel-bundler": "1.12.5",
     "parcel-plugin-shebang": "1.4.1",
     "pinst": "3.0.0",
-    "prettier": "2.8.1",
+    "prettier": "2.8.2",
     "prettier-plugin-packagejson": "2.3.0",
     "rimraf": "3.0.2",
     "sass": "1.57.1",
@@ -78,7 +78,7 @@
     "stylelint-config-recess-order": "3.1.0",
     "stylelint-config-standard-scss": "6.1.0",
     "ts-node": "10.9.1",
-    "typescript": "4.8.4"
+    "typescript": "4.9.4"
   },
   "engines": {
     "node": ">= 16",
