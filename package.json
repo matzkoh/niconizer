@@ -56,8 +56,8 @@
   },
   "devDependencies": {
     "@types/ws": "8.5.4",
-    "@typescript-eslint/eslint-plugin": "5.13.0",
-    "@typescript-eslint/parser": "5.13.0",
+    "@typescript-eslint/eslint-plugin": "5.48.1",
+    "@typescript-eslint/parser": "5.48.1",
     "electron-packager": "17.1.1",
     "eslint": "8.31.0",
     "eslint-config-prettier": "8.6.0",
