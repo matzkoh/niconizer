@@ -38,7 +38,6 @@
     "lint:prettier": "prettier -l \"**/*.{html,json,md,yml}\"",
     "lint:stylelint": "stylelint \"**/*.{css,scss}\"",
     "lint:type": "tsc",
-    "prepackage": "npm run build",
     "package": "run-p package:*",
     "postpackage": "ts-node script/postpackage",
     "package-base": "electron-packager . --overwrite --asar --ignore \"^/(?!dist(/app(/|$)|$)|node_modules(/|$)|package\\.json$)\" --out dist/package --download.cacheRoot .electron",
