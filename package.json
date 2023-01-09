@@ -50,7 +50,7 @@
   },
   "dependencies": {
     "electron": "22.0.0",
-    "pkg-dir": "5.0.0",
+    "pkg-dir": "7.0.0",
     "ws": "8.11.0"
   },
   "devDependencies": {
