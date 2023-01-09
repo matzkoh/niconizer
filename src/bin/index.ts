@@ -1,11 +1,11 @@
 import { spawn } from 'child_process'
 import electronPath from 'electron'
-import pkgDir from 'pkg-dir'
+import { packageDirectory } from 'pkg-dir'
 
-pkgDir(__dirname)
+packageDirectory()
   .then(dir => {
     if (dir) {
-      spawn(electronPath as unknown as string, [dir])
+      spawn(`${electronPath}`, [dir])
     }
   })
   .catch(console.error)
