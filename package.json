@@ -25,6 +25,7 @@
     "build:parcel": "parcel build --no-source-maps --public-url .",
     "clean": "rimraf dist",
     "clean:package": "rimraf dist/package",
+    "dev:content": "parcel serve src/content/index.html",
     "fix": "run-p fix:*",
     "fix:eslint": "npm run lint:eslint -- --fix",
     "fix:prettier": "npm run lint:prettier -- --write",
@@ -44,7 +45,7 @@
     "postpublish": "pinst --enable",
     "start": "electron .",
     "test": "npm run lint",
-    "zip": "ts-node script/postpackage.ts"
+    "zip": "ts-node-script script/postpackage.ts"
   },
   "dependencies": {
     "electron": "22.0.0",
@@ -86,6 +87,7 @@
     "npm": ">= 7"
   },
   "targets": {
+    "main": false,
     "app": {
       "context": "electron-main",
       "source": "src/app/index.ts"

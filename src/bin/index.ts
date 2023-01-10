@@ -11,3 +11,7 @@ import('pkg-dir'.slice())
     }
   })
   .catch(console.error)
+
+export function throws(error: Error): never {
+  throw error
+}
