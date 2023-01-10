@@ -1,11 +1,12 @@
-main()
+const emit = useContainer()
 
-function main(): void {
-  const container = document.querySelector('.comment-container')
+new WebSocket('ws://localhost:25252/').addEventListener('message', event => {
+  emit(event.data)
+})
 
-  if (!container) {
-    return
-  }
+function useContainer() {
+  const container =
+    document.querySelector('.comment-container') ?? throws(new Error('Comment container not found'))
 
   container.addEventListener('transitionend', ({ target }) => {
     if (target instanceof Element) {
@@ -13,72 +14,81 @@ function main(): void {
     }
   })
 
-  const lineHeight = (() => {
-    const el = document.createElement('div')
-    el.className = 'comment'
-    el.style.visibility = 'hidden'
-    el.textContent = 'M'
-    container.appendChild(el)
+  return emitContent.bind(null, container)
+}
 
-    const { offsetHeight } = el
-    el.remove()
+function getLineHeight(container: Element) {
+  const el = document.createElement('div')
+  el.className = 'comment'
+  el.style.visibility = 'hidden'
+  el.textContent = 'M'
+  container.appendChild(el)
 
-    return offsetHeight
-  })()
+  const { offsetHeight } = el
+  el.remove()
 
-  new WebSocket('ws://localhost:25252/').addEventListener('message', event => {
-    const el = document.createElement('div')
-    el.className = 'comment flip-enter-to'
-    el.innerHTML = event.data
-    container.appendChild(el)
+  return offsetHeight
+}
 
-    const { offsetWidth, offsetHeight, offsetLeft: to } = el
+function emitContent(container: Element, content: string): void {
+  const lineHeight = getLineHeight(container)
 
-    el.classList.remove('flip-enter-to')
+  const el = document.createElement('div')
+  el.className = 'comment flip-enter-to'
+  el.innerHTML = content
+  container.appendChild(el)
 
-    const from = el.offsetLeft
+  const { offsetWidth, offsetHeight, offsetLeft: to } = el
 
-    el.classList.add('flip-enter-active')
-    el.style.transform = `translateX(${to - from}px)`
+  el.classList.remove('flip-enter-to')
 
-    let layer = 0
-    let line = 0
+  const from = el.offsetLeft
 
+  el.classList.add('flip-enter-active')
+  el.style.transform = `translateX(${to - from}px)`
+
+  let layer = 0
+  let line = 0
+
+  while (true) {
     while (true) {
-      while (true) {
-        const comments = container.querySelectorAll(`[data-layer="${layer}"][data-line="${line}"]`)
-        const lastCommentOfLine = comments[comments.length - 1]
+      const comments = container.querySelectorAll(`[data-layer="${layer}"][data-line="${line}"]`)
 
-        if (!lastCommentOfLine) {
-          break
-        }
+      const lastCommentOfLine = comments[comments.length - 1]
 
-        if (checkCollision(lastCommentOfLine, offsetWidth)) {
-          line++
-
-          continue
-        }
-
+      if (!lastCommentOfLine) {
         break
       }
 
-      if (!line || lineHeight * line + offsetHeight <= innerHeight) {
-        break
+      if (checkCollision(lastCommentOfLine, offsetWidth)) {
+        line++
+
+        continue
       }
 
-      layer++
-      line = 0
+      break
     }
 
-    el.setAttribute('data-line', `${line}`)
-    el.setAttribute('data-layer', `${layer}`)
-    el.style.setProperty('--line', `${line}`)
-    el.style.setProperty('--layer', `${layer}`)
-  })
+    if (!line || lineHeight * line + offsetHeight <= innerHeight) {
+      break
+    }
+
+    layer++
+    line = 0
+  }
+
+  el.setAttribute('data-line', `${line}`)
+  el.setAttribute('data-layer', `${layer}`)
+  el.style.setProperty('--line', `${line}`)
+  el.style.setProperty('--layer', `${layer}`)
 }
 
 function checkCollision(el: Element, width: number): boolean {
   const r = el.getBoundingClientRect()
 
   return innerWidth < r.right || innerWidth - r.left < width
+}
+
+function throws(error: Error): never {
+  throw error
 }

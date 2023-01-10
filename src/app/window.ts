@@ -32,7 +32,5 @@ export function openWindow(): void {
 }
 
 export function closeWindow(): void {
-  if (win) {
-    win.close()
-  }
+  win?.close()
 }
