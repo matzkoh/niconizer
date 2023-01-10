@@ -1,5 +1,6 @@
 import { BrowserWindow, screen } from 'electron'
-import path from 'path'
+
+import contentUri from '../content/index.html'
 
 let win: BrowserWindow | undefined
 
@@ -23,7 +24,7 @@ export function openWindow(): void {
 
   win.setIgnoreMouseEvents(true)
   win.setVisibleOnAllWorkspaces(true)
-  win.loadURL(path.join('file://', __dirname, 'content/index.html'))
+  win.loadURL(contentUri)
 
   win.on('closed', () => {
     win = undefined

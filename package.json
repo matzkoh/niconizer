@@ -12,7 +12,7 @@
   ],
   "repository": "github:matzkoh/niconizer",
   "license": "MIT",
-  "main": "dist/app",
+  "main": "dist/app/index.js",
   "bin": {
     "niconizer": "dist/bin/index.js"
   },
@@ -21,12 +21,10 @@
     "dist/bin"
   ],
   "scripts": {
-    "build": "npm-run-all clean:dist -p build:*",
-    "build-base": "parcel build --no-source-maps --public-url .",
-    "build:app": "npm run build-base -- -t electron-main src/app/index.ts -d dist/app",
-    "build:bin": "npm run build-base -- -t node src/bin/index.ts -d dist/bin",
-    "build:content": "npm run build-base -- -t electron-renderer src/content/index.html -d dist/app/content",
-    "clean:dist": "rimraf dist",
+    "build": "npm-run-all clean -p build:*",
+    "build:parcel": "parcel build --no-source-maps --public-url .",
+    "clean": "rimraf dist",
+    "clean:package": "rimraf dist/package",
     "fix": "run-p fix:*",
     "fix:eslint": "npm run lint:eslint -- --fix",
     "fix:prettier": "npm run lint:prettier -- --write",
@@ -37,8 +35,7 @@
     "lint:prettier": "prettier -c .",
     "lint:stylelint": "stylelint .",
     "lint:type": "tsc",
-    "package": "run-p package:*",
-    "postpackage": "ts-node script/postpackage",
+    "package": "npm-run-all clean:package -p package:* -s zip",
     "package-base": "electron-packager . --overwrite --asar --ignore \"^/(?!dist(/app(/|$)|$)|node_modules(/|$)|package\\.json$)\" --out dist/package --download.cacheRoot .electron",
     "package:linux": "npm run package-base -- --platform linux --arch x64",
     "package:mac": "npm run package-base -- --platform darwin --arch x64",
@@ -46,14 +43,17 @@
     "prepublishOnly": "pinst --disable",
     "postpublish": "pinst --enable",
     "start": "electron .",
-    "test": "npm run lint"
+    "test": "npm run lint",
+    "zip": "ts-node script/postpackage.ts"
   },
   "dependencies": {
     "electron": "22.0.0",
+    "file-uri-to-path": "2.0.0",
     "pkg-dir": "7.0.0",
     "ws": "8.12.0"
   },
   "devDependencies": {
+    "@parcel/transformer-sass": "2.8.2",
     "@types/node": "18.11.18",
     "@types/ws": "8.5.4",
     "@typescript-eslint/eslint-plugin": "5.48.1",
@@ -67,8 +67,7 @@
     "husky": "8.0.3",
     "lint-staged": "13.1.0",
     "npm-run-all": "4.1.5",
-    "parcel-bundler": "1.12.5",
-    "parcel-plugin-shebang": "1.4.1",
+    "parcel": "2.8.2",
     "pinst": "3.0.0",
     "postcss": "8.4.21",
     "prettier": "2.8.2",
@@ -82,7 +81,19 @@
     "typescript": "4.9.4"
   },
   "engines": {
+    "electron": "22",
     "node": ">= 16",
     "npm": ">= 7"
+  },
+  "targets": {
+    "app": {
+      "context": "electron-main",
+      "source": "src/app/index.ts"
+    },
+    "cli": {
+      "context": "node",
+      "source": "src/bin/index.ts",
+      "distDir": "dist/bin"
+    }
   }
 }
