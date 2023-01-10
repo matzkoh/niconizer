@@ -1,8 +1,10 @@
+#!/usr/bin/env node
+
 import { spawn } from 'child_process'
 import electronPath from 'electron'
-import { packageDirectory } from 'pkg-dir'
 
-packageDirectory()
+import('pkg-dir'.slice())
+  .then((m: typeof import('pkg-dir')) => m.packageDirectory())
   .then(dir => {
     if (dir) {
       spawn(`${electronPath}`, [dir])

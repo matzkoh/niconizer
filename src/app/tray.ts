@@ -1,7 +1,7 @@
 import { app, Menu, Tray } from 'electron'
-import path from 'path'
+import uriToPath from 'file-uri-to-path'
 
-import iconPath from '../../icon/icon_16x16.png'
+import iconUri from '../../icon/icon_16x16.png'
 import { closeWindow, openWindow } from './window'
 
 /**
@@ -11,7 +11,7 @@ import { closeWindow, openWindow } from './window'
 let tray: Tray
 
 export function initTray(): void {
-  tray = new Tray(path.join(__dirname, iconPath))
+  tray = new Tray(uriToPath(iconUri))
   tray.setContextMenu(
     Menu.buildFromTemplate([
       { label: 'Start', click: start },
