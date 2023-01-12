@@ -15,7 +15,7 @@ const packageDir = 'dist/package'
 readdir(packageDir).then(files => {
   files
     .map(name => /^[^-]+-(\w+)-.+$/.exec(name))
-    .filter((a): a is RegExpExecArray => !!a)
+    .flatMap(a => (a ? [a] : []))
     .map(([name, target]) => zipDir(name, target))
 })
 
@@ -24,7 +24,7 @@ async function zipDir(src: string, target: string): Promise<void> {
   const options = { cwd: packageDir }
 
   if (target === 'win32') {
-    if (process.env.CIRCLECI) {
+    if (process.env.CI) {
       await spawnPromise('convmv', ['-r', '-f', 'utf8', '-t', 'cp932', '--notest', src], options)
       await spawnPromise('zip', ['-rq', dest, src], options)
       await spawnPromise('convmv', ['-r', '-f', 'cp932', '-t', 'utf8', '--notest', src], options)
