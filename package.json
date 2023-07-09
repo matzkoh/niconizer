@@ -48,7 +48,7 @@
     "zip": "ts-node-script script/postpackage.ts"
   },
   "dependencies": {
-    "electron": "24.4.1",
+    "electron": "24.6.2",
     "file-uri-to-path": "2.0.0",
     "pkg-dir": "7.0.0",
     "ws": "8.13.0"
