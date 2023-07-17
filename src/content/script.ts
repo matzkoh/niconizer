@@ -1,7 +1,7 @@
 const emit = useContainer()
 
 new WebSocket('ws://localhost:25252/').addEventListener('message', event => {
-  emit(event.data)
+  emit(event.data as string)
 })
 
 function useContainer() {
@@ -14,7 +14,7 @@ function useContainer() {
     }
   })
 
-  return emitContent.bind(null, container)
+  return emitContent.bind(undefined, container)
 }
 
 function getLineHeight(container: Element) {
@@ -22,7 +22,7 @@ function getLineHeight(container: Element) {
   el.className = 'comment'
   el.style.visibility = 'hidden'
   el.textContent = 'M'
-  container.appendChild(el)
+  container.append(el)
 
   const { offsetHeight } = el
   el.remove()
@@ -36,25 +36,27 @@ function emitContent(container: Element, content: string): void {
   const el = document.createElement('div')
   el.className = 'comment flip-enter-to'
   el.innerHTML = content
-  container.appendChild(el)
+  container.append(el)
 
-  const { offsetWidth, offsetHeight, offsetLeft: to } = el
+  const { classList, style, dataset, offsetWidth, offsetHeight, offsetLeft: to } = el
 
-  el.classList.remove('flip-enter-to')
+  classList.remove('flip-enter-to')
 
-  const from = el.offsetLeft
+  const { offsetLeft: from } = el
 
-  el.classList.add('flip-enter-active')
-  el.style.transform = `translateX(${to - from}px)`
+  classList.add('flip-enter-active')
+  style.transform = `translateX(${to - from}px)`
 
   let layer = 0
   let line = 0
 
   while (true) {
     while (true) {
-      const comments = container.querySelectorAll(`[data-layer="${layer}"][data-line="${line}"]`)
+      const comments = [
+        ...container.querySelectorAll(`[data-layer="${layer}"][data-line="${line}"]`),
+      ]
 
-      const lastCommentOfLine = comments[comments.length - 1]
+      const lastCommentOfLine = comments.at(-1)
 
       if (!lastCommentOfLine) {
         break
@@ -77,10 +79,10 @@ function emitContent(container: Element, content: string): void {
     line = 0
   }
 
-  el.setAttribute('data-line', `${line}`)
-  el.setAttribute('data-layer', `${layer}`)
-  el.style.setProperty('--line', `${line}`)
-  el.style.setProperty('--layer', `${layer}`)
+  dataset.line = `${line}`
+  dataset.layer = `${layer}`
+  style.setProperty('--line', `${line}`)
+  style.setProperty('--layer', `${layer}`)
 }
 
 function checkCollision(el: Element, width: number): boolean {

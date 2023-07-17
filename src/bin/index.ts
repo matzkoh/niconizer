@@ -1,17 +1,14 @@
 #!/usr/bin/env node
 
-import { spawn } from 'child_process'
+import { spawn } from 'node:child_process'
+
 import electronPath from 'electron'
+import { packageDirectory } from 'pkg-dir'
 
-import('pkg-dir'.slice())
-  .then((m: typeof import('pkg-dir')) => m.packageDirectory())
-  .then(dir => {
-    if (dir) {
-      spawn(`${electronPath}`, [dir])
-    }
-  })
-  .catch(console.error)
+import { throws } from '../utils/throws'
 
-export function throws(error: Error): never {
-  throw error
-}
+packageDirectory().then(dir => {
+  if (dir) {
+    spawn(`${electronPath as unknown as string}`, [dir])
+  }
+}, throws)

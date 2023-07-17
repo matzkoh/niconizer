@@ -24,7 +24,9 @@ export function openWindow(): void {
 
   win.setIgnoreMouseEvents(true)
   win.setVisibleOnAllWorkspaces(true)
-  win.loadURL(contentUri)
+  win.loadURL(contentUri).catch(error => {
+    throw error
+  })
 
   win.on('closed', () => {
     win = undefined

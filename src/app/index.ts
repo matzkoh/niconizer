@@ -1,5 +1,7 @@
 import { app } from 'electron'
 
+import { throws } from '../utils/throws'
+
 import { initServer } from './socket'
 import { initTray, start } from './tray'
 
@@ -13,6 +15,9 @@ app.on('ready', () => {
 /** to keep process */
 app.on('window-all-closed', () => {})
 
-const port = typeof process.env.PORT === 'string' ? parseInt(process.env.PORT, 10) : undefined
+const port =
+  typeof process.env.PORT === 'string' ? Number.parseInt(process.env.PORT, 10) : undefined
 
-initServer(port).then(wss => console.log(`listening on port ${wss.options.port}`), console.error)
+initServer(port).then(wss => {
+  console.log(`listening on port ${wss.options.port}`)
+}, throws)

@@ -1,7 +1,8 @@
-import { app, Menu, Tray } from 'electron'
+import { Menu, Tray, app } from 'electron'
 import uriToPath from 'file-uri-to-path'
 
 import iconUri from '../../icon/icon_16x16.png'
+
 import { closeWindow, openWindow } from './window'
 
 /**
