@@ -1,13 +1,26 @@
 {
   "version": "0.2",
+  "dictionaries": [
+    "companies",
+    "bash",
+    "css",
+    "filetypes",
+    "html",
+    "softwareTerms",
+    "misc",
+    "node",
+    "npm",
+    "typescript"
+  ],
   "ignorePaths": [],
-  "dictionaryDefinitions": [],
-  "dictionaries": [],
   "words": [
     "asar",
+    "bilibili",
     "convmv",
     "corepack",
     "eqeqeq",
+    "greasemonkey",
+    "matzkoh",
     "niconizer",
     "nicovideo",
     "notest",
@@ -15,11 +28,11 @@
     "pinst",
     "postpackage",
     "postpublish",
+    "stylelint",
     "tweetdeck",
     "userscript",
+    "userscripts",
     "wemake",
     "wscat"
-  ],
-  "ignoreWords": [],
-  "import": []
+  ]
 }

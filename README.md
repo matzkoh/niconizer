@@ -13,13 +13,13 @@
 
 ## What is this
 
-_niconizer_ is a simple desktop application that has two functional bellow.
+_niconizer_ is a simple desktop application that has two functionalities below.
 
-- Overlay short html content on the screen directly.
+- Overlay short HTML content directly on the screen.
   - The content flows from right to left on the screen and disappears.
 - Local WebSocket server to receive the content.
 
-Can be used in combination with clients that send contents.
+It can be used in combination with clients that send contents.
 
 ## Getting started
 
@@ -30,14 +30,14 @@ $ npm i -g niconizer
 $ niconizer
 ```
 
-Then the WebSocket server starts up on your computer and listen for connections.
+Then the WebSocket server starts up on your computer and listens for connections.
 
 Available clients are in the [section](#clients) bellow.
 
 ## Tray Icon Menu
 
 - `Start`
-  - Open transparent window that shows the content.
+  - Open a transparent window that shows the content.
 - `Stop`
   - Close the window and pause displaying the content.
 - `Quit`
@@ -69,7 +69,7 @@ const ws = new WebSocket("ws://localhost:25252/");
 ws.send("<b>Hello, world!</b>");
 ```
 
-### Browser (assumed use from userscript such as Greasemonkey)
+### Browser (assuming use from userscripts such as Greasemonkey)
 
 ```js
 const ws = new WebSocket("ws://localhost:25252/");
