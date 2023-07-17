@@ -82,11 +82,6 @@
     "typescript": "5.1.6"
   },
   "packageManager": "npm@9.6.4",
-  "engines": {
-    "electron": "22",
-    "node": ">= 16",
-    "npm": ">= 7"
-  },
   "targets": {
     "main": false,
     "app": {
