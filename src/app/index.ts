@@ -3,7 +3,7 @@ import { app } from 'electron'
 import { initServer } from './socket'
 import { initTray, start } from './tray'
 
-app.dock.hide()
+app.dock?.hide()
 
 app.on('ready', () => {
   initTray()
