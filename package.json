@@ -72,7 +72,7 @@
     "pinst": "3.0.0",
     "postcss": "8.4.27",
     "prettier-plugin-packagejson": "2.4.5",
-    "prettier": "3.0.0",
+    "prettier": "3.0.1",
     "rimraf": "5.0.1",
     "sass": "1.64.2",
     "stylelint": "15.10.2",
