@@ -56,7 +56,7 @@
   "devDependencies": {
     "@parcel/transformer-sass": "2.12.0",
     "@types/node": "20.14.10",
-    "@types/ws": "8.5.10",
+    "@types/ws": "8.5.11",
     "@typescript-eslint/eslint-plugin": "7.16.0",
     "@typescript-eslint/parser": "7.16.0",
     "electron-packager": "17.1.2",
