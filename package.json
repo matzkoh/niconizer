@@ -71,7 +71,7 @@
     "parcel": "2.13.0",
     "pinst": "3.0.0",
     "postcss": "8.4.49",
-    "prettier-plugin-packagejson": "2.5.3",
+    "prettier-plugin-packagejson": "2.5.5",
     "prettier": "3.3.3",
     "rimraf": "6.0.1",
     "sass": "1.81.0",
