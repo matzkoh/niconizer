@@ -77,7 +77,7 @@
     "sass": "1.81.0",
     "stylelint": "16.11.0",
     "stylelint-config-recess-order": "5.1.1",
-    "stylelint-config-standard-scss": "13.1.0",
+    "stylelint-config-standard-scss": "14.0.0",
     "ts-node": "10.9.2",
     "typescript": "5.7.2"
   },
