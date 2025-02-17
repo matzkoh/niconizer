@@ -63,7 +63,7 @@
     "eslint-config-prettier": "9.1.0",
     "eslint-import-resolver-typescript": "3.7.0",
     "eslint-plugin-import": "2.31.0",
-    "eslint-plugin-unicorn": "56.0.1",
+    "eslint-plugin-unicorn": "57.0.0",
     "eslint": "8.57.1",
     "husky": "9.1.7",
     "lint-staged": "15.2.10",
