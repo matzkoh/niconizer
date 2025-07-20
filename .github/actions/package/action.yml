@@ -25,6 +25,7 @@ runs:
       run: |
         sudo apt update
         sudo apt install -y wine convmv
+        sudo ln -s /usr/bin/wine /usr/bin/wine64
 
     - uses: nick-fields/retry@v3
       with:
