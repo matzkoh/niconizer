@@ -54,7 +54,7 @@
     "ws": "8.18.3"
   },
   "devDependencies": {
-    "@parcel/transformer-sass": "2.13.2",
+    "@parcel/transformer-sass": "2.13.3",
     "@types/node": "22.16.5",
     "@types/ws": "8.18.1",
     "@typescript-eslint/eslint-plugin": "8.37.0",
@@ -68,7 +68,7 @@
     "husky": "9.1.7",
     "lint-staged": "16.1.2",
     "npm-run-all2": "8.0.4",
-    "parcel": "2.13.2",
+    "parcel": "2.13.3",
     "pinst": "3.0.0",
     "postcss": "8.4.49",
     "prettier-plugin-packagejson": "2.5.19",
