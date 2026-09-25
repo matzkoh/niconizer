@@ -61,7 +61,7 @@
     "@typescript-eslint/parser": "8.48.1",
     "electron-packager": "17.1.2",
     "eslint-config-prettier": "10.1.8",
-    "eslint-import-resolver-typescript": "4.4.4",
+    "eslint-import-resolver-typescript": "4.4.5",
     "eslint-plugin-import": "2.32.0",
     "eslint-plugin-unicorn": "56.0.1",
     "eslint": "8.57.1",
